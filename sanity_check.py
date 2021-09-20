@@ -12,4 +12,4 @@ bert = BertModel.from_pretrained('bert-base-uncased')
 outputs = bert(sent_ids, att_mask)
 for k in ['last_hidden_state', 'pooler_output']:
     assert torch.allclose(outputs[k], sanity_data[k], rtol=1e-3)
-
+print("Your BERT implementation is correct!")

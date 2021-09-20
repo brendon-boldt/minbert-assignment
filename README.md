@@ -1,5 +1,5 @@
 # minbert Assignment
-by Zhengbao Jiang, Shuyan Zhou, and Ritam Dutt
+by Shuyan Zhou, Zhengbao Jiang, Ritam Dutt and Brendon Boldt
 
 This is an exercise in developing a minimalist version of BERT, part of Carnegie Mellon University's [CS11-747: Neural Networks for NLP](http://www.phontron.com/class/nn4nlp2020/).
 
@@ -16,20 +16,23 @@ You will then perform sentence classification on ``sst`` dataset and ``cfimdb`` 
 ```
 mkdir -p ANDREWID
 
-python3 classifier.py --option [pretrain/finetune] --epochs NUM_EPOCHS --lr_pretrain LR_FOR_PRETRAINING --lr_finetune LR_FOR_FINETUNING --seed RANDOM_SEED
+python3 classifier.py --option [pretrain/finetune] --epochs NUM_EPOCHS --lr LR --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt
 ```
 ## Reference accuracies: 
 
+Pretraining for SST:
+Dev Accuracy: 0.400
+Test Accuracy: 0.414
+
 Mean reference accuracies over 10 random seeds with their standard deviation shown in brackets.
 
-Pretraining for SST:
-Dev Accuracy   : 0.387 (0.008)
-Test Accuracy  : 0.397 (0.013)
+Finetuning for SST:
+Dev Accuracy: 0.520 (0.006)
+Test Accuracy: 0.525 (0.007)
 
-Finetuning for SST :
-Dev Accuracy   : 0.520 (0.006)
-Test Accuracy  : 0.525 (0.007)
-
+Finetuning for CFIMDB:
+Dev Accuracy: 0.967
+Test Accuracy: 0.973
 
 ### Submission
 The submission file should be a zip file with the following structure (assuming the andrew id is ``ANDREWID``):
@@ -54,13 +57,13 @@ ANDREWID/
 ```
 
 ### Grading
-* A+: You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements:
+* A+: You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements. Please write down the things you implemented and experiments you performed in the report. You are also welcome to provide additional materials such as commands to run your code in a script and training logs.
     * perform [continued pre-training](https://arxiv.org/abs/2004.10964) using the MLM objective to do domain adaptation
     * try [alternative fine-tuning algorithms](https://www.aclweb.org/anthology/2020.acl-main.197)
     * add other model components on top of the model
-* A: You implement all the missing pieces and the original ``classifier.py`` with ``--option finetune`` code that achieves comparable accuracy to our reference implementation
-* A-: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` code that achieves comparable accuracy to our reference implementation
-* B+: All missing pieces are implemented and pass tests in ``sanity_check.py``, but accuracy is not comparable to the reference.
+* A: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code that achieves comparable accuracy to our reference implementation
+* A-: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code but accuracy is not comparable to the reference.
+* B+: All missing pieces are implemented and pass tests in ``sanity_check.py``
 * B or below: Some parts of the missing pieces are not implemented.
 
 ### Acknowledgement

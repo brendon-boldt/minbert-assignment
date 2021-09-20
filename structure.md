@@ -55,6 +55,10 @@ This class is used to
 * classify the sentence by applying dropout to the pooled-output and project it using a linear layer.
 * adjust the model paramters depending on whether we are pre-training or fine-tuning BERT
 
+## optimizer.py 
+TODO Brendon
+
+
 ## base_bert.py
 This is the base class for the BertModel. It contains functions to 
 1. initialize the weights ``init_weights``, ``_init_weights``
