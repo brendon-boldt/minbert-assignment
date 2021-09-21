@@ -38,6 +38,8 @@ class AdamW(Optimizer):
         if grad.is_sparse:
           raise RuntimeError("Adam does not support sparse gradients, please consider SparseAdam instead")
 
+        raise NotImplementedError()
+
         # State should be stored in this dictionary
         state = self.state[p]
 
@@ -52,11 +54,7 @@ class AdamW(Optimizer):
 
         # Update parameters
 
-        # Just adding the square of the weights to the loss function is *not*
-        # the correct way of using L2 regularization/weight decay with Adam,
-        # since that will interact with the m and v parameters in strange ways.
-        # Instead we want to decay the weights in a manner that doesn't interact
-        # with the m/v parameters.
-        # Add weight decay at the end
+        # Add weight decay after the main gradient-based updates.
+        # Please note that the learning rate should be incorporated into this update.
 
     return loss
